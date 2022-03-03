@@ -102,7 +102,7 @@ class Decoder(nn.Module):
 
 
 class ShortMotionDiscriminator(nn.Module):
-    def __init__(self, length=3, in_dim, hidden_dim=512, out_dim=1):
+    def __init__(self, in_dim, hidden_dim=512, out_dim=1, length=3):
         super(ShortMotionDiscriminator, self).__init__()
         self.in_dim = in_dim
         self.hidden_dim = hidden_dim
@@ -123,7 +123,7 @@ class ShortMotionDiscriminator(nn.Module):
 
 
 class LongMotionDiscriminator(nn.Module):
-    def __init__(self, length=10, in_dim, hidden_dim=512, out_dim=1):
+    def __init__(self, in_dim, hidden_dim=512, out_dim=1, length=10):
         super(LongMotionDiscriminator, self).__init__()
         self.in_dim = in_dim
         self.hidden_dim = hidden_dim
