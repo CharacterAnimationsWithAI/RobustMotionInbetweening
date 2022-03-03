@@ -10,7 +10,7 @@ def flip_bvh(root, filename):
     except FileExistsError:
         pass
 
-    with open(os.path.join(root + "/flipped", filename.replace('.bvh', '_flip.bvh')), 'w+') as fout:
+    with open(os.path.join(root + "/flipped", filename), 'w+') as fout:
         cnt = 0
         for line in open(os.path.join(root, filename), 'r'):
             cnt += 1

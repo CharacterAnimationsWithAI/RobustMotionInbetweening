@@ -5,8 +5,10 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 data = {
-    "path_small": "./lafan1/lafan1_small/",
     "path": "./lafan1/lafan1/",
+    "path_flipped": "./lafan1/lafan1/flipped/",
+    "path_small": "./lafan1/lafan1_small/",
+    "path_small_flipped": "./lafan1/lafan1_small/flipped/",
     "offsets": [
         [-42.198200, 91.614723, -40.067841],
         [0.103456, 1.857829, 10.548506],
@@ -77,6 +79,7 @@ model = {
     "offset_input_dim": 91,
     "target_input_dim": 88,
     "lstm_dim": 768,
+    "decoder_output_dim": 95,
     "num_joints": 22,
 }
 

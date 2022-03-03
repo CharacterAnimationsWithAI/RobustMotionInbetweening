@@ -1,2 +1,6 @@
 ubisoft-laforge-animation-dataset/
 lafan1/
+models/*
+logs/*
+!models/.gitkeep
+!logs/.gitkeep
