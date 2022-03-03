@@ -6,4 +6,11 @@
 - [Original implemention by xjwxjw](https://github.com/xjwxjw/Pytorch-Robust-Motion-In-betweening)
 
 ## How to run this
-- First clone the dataset into the root directory from [here](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)
+1. Load dataset
+    - Download the dataset repo into the root directory from [here](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)
+    - Extract the lafan1/lafan.zip file and move the ubisoft-laforge-animation-dataset/lafan1 folder to the root directory
+    - You may want to create a lafan1_small folder in this directory with only 1 activity for each subject for faster debuggin
+    - Run the ExploreDataset notebook to see if the dataset was loaded properly
+
+2. Preprocessing
+    - Run the flip_bvh.py file by passing it the path to the lafan1 and lafan1_small folders.
