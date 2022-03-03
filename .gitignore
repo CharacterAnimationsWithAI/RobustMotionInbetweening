@@ -2,5 +2,8 @@ ubisoft-laforge-animation-dataset/
 lafan1/
 models/*
 logs/*
+results/temp/*
+results/*.mp4
 !models/.gitkeep
 !logs/.gitkeep
+!results/temp/.gitkeep
