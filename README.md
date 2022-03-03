@@ -14,3 +14,9 @@
 
 2. Preprocessing
     - Run the flip_bvh.py file by passing it the path to the lafan1 and lafan1_small folders.
+
+3. Training
+    - Use the Train notebook to train the generator/discriminator.
+
+4. Evaluation
+    - Use the Evaluation notebook to generate frames and save video
