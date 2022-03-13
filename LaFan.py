@@ -8,6 +8,7 @@ sys.path.append("..")
 import numpy as np
 from lafan1 import extract, utils, benchmarks
 
+
 class LaFan1(Dataset):
     def __init__(self, bvh_path, train = False, seq_len = 50, offset = 10, debug = False):
         """
@@ -96,3 +97,29 @@ class LaFan1(Dataset):
         sample['X'] = self.data['X'][idx_].astype(np.float32)
 
         return sample
+
+
+    def load_single_bvh_sequence(filepath, start=None, end=None):
+        anim = extract.read_bvh(filepath)
+        
+        q = anim.quats[start:end]
+        x = anim.pos[start:end]
+
+        print(f"Sequence loaded, length {len(anim.quats)} frames.")
+        
+        q_glbl, x_glbl = utils.quat_fk(q, x, anim.parents) # 
+        c_l, c_r = utils.extract_feet_contacts(x_glbl, [3, 4], [7, 8], velfactor=0.02)
+        
+        sequence = {}
+        sequence['local_q'] = q
+        sequence['root_v'] = x_glbl[1:, 0, :] - x_glbl[:-1, 0, :]
+        sequence['contact'] = np.concatenate([c_l, c_r], -1)
+        sequence['root_p_offset'] = x_glbl[-1, 0, :]
+        sequence['local_q_offset'] = q[-1, :, :]
+        sequence['target'] = q[-1, :, :]
+        sequence['root_p'] = x_glbl[:, 0, :]
+        sequence['X'] = x_glbl[:, :, :]
+
+        print(f"Slice of length {sequence['local_q'].shape[0]} returned")
+
+        return sequence
