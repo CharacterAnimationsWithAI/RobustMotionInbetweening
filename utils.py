@@ -1,6 +1,9 @@
+import os
 import torch
 import torch.nn as nn
 import numpy as np
+from skeleton.animation_data import AnimationData
+from skeleton import bvh
 
 
 def PLU(x, alpha = 0.1, c = 1.0):
@@ -24,4 +27,8 @@ def gen_ztta(timesteps=60, dim=256):
 
 
 def save_bvh_from_network_output(rotations, output_path):
-    pass
+    anim = AnimationData.from_network_output(rotations)
+    bvh, names, ftime = anim.get_BVH()
+    if not os.path.exists(os.path.dirname(output_path)):
+        os.makedirs(os.path.dirname(output_path))
+    bvh.save(output_path, bvh, names, ftime)
