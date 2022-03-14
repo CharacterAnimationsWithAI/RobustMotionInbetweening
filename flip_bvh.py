@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import sys
-from quaternion import euler_to_quaternion, qeuler_np
+from skeleton.quaternion import euler_to_quaternion, qeuler_np
 
 
 def flip_bvh(root, filename):
